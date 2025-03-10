@@ -7,7 +7,7 @@ const propiedades_venta = [
     ubicacion: "123 Luxury Lane, Prestige Suburb, CA 45678",
     habitaciones: 4,
     baños: 4,
-    costo: 5.000,
+    costo: 5.0,
     smoke: false,
     pets: false,
   },
@@ -19,7 +19,7 @@ const propiedades_venta = [
     ubicacion: "789 Mountain Road, Summit Peaks, CA 23456",
     habitaciones: 2,
     baños: 1,
-    costo: 1.200,
+    costo: 1.2,
     smoke: true,
     pets: true,
   },
@@ -31,7 +31,7 @@ const propiedades_venta = [
     ubicacion: "567 Skyline Avenue, Skyview City, CA 56789",
     habitaciones: 3,
     baños: 3,
-    costo: 4.500,
+    costo: 4.5,
     smoke: false,
     pets: true,
   },
@@ -40,7 +40,7 @@ const propiedades_venta = [
 const ventaSection = document.getElementById("venta");
 
 for (let propiedad of propiedades_venta) {
-  const cardTemplate = `<div class="card">
+  const cardTemplate = ` <div class="col-md-4 d-flex"> <div class="card">
               <img
                 src=${propiedad.src}
                 class="card-img-top"
@@ -64,9 +64,13 @@ for (let propiedad of propiedades_venta) {
                     propiedad.baños
                   } <span>Baños</span>
                 </p>
-                <p><i class="fas fa-dollar-sign"></i> ${propiedad.costo.toLocaleString("es-ES", { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</p>
-                ${propiedad.smoke ? 
-                  `<p class="text-success">
+                <p><i class="fas fa-dollar-sign"></i> ${propiedad.costo.toLocaleString(
+                  "es-ES",
+                  { minimumFractionDigits: 3, maximumFractionDigits: 3 }
+                )}</p>
+                ${
+                  propiedad.smoke
+                    ? `<p class="text-success">
                     <i class="fas fa-smoking">
                     </i> Permitido fumar
                   </p>`
@@ -75,8 +79,9 @@ for (let propiedad of propiedades_venta) {
                     ></i> No se permite fumar
                   </p>`
                 }
-                  ${propiedad.pets ?
-                  `<p class="text-success">
+                  ${
+                    propiedad.pets
+                      ? `<p class="text-success">
                     <i class="fas fa-paw">
                     </i> Mascotas permitidas
                   </p>`
@@ -86,6 +91,7 @@ for (let propiedad of propiedades_venta) {
                   </p>`
                   }
                 </p>
+              </div>
               </div>`;
   ventaSection.innerHTML += cardTemplate;
 }

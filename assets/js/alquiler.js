@@ -42,7 +42,7 @@ const propiedades_alquiler = [
 const alquilerSection = document.getElementById("alquiler");
 
 for (let propiedad of propiedades_alquiler) {
-  const cardTemplate = `<div class="card">
+  const cardTemplate = `<div class="col-md-4 d-flex"> <div class="card">
               <img
                 src=${propiedad.src}
                 class="card-img-top"
@@ -93,6 +93,7 @@ for (let propiedad of propiedades_alquiler) {
                   </p>`
                   }
                 </p>
+              </div>
               </div>`;
   alquilerSection.innerHTML += cardTemplate;
 }
