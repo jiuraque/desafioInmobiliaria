@@ -36,3 +36,56 @@ const propiedades_venta = [
     pets: true,
   },
 ];
+
+const ventaSection = document.getElementById("venta");
+
+for (let propiedad of propiedades_venta) {
+  const cardTemplate = `<div class="card">
+              <img
+                src=${propiedad.src}
+                class="card-img-top"
+                alt="Imagen del departamento"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                ${propiedad.nombre}
+                </h5>
+                <p class="card-text">
+                ${propiedad.descripcion}
+                </p>
+                <p>
+                  <i class="fas fa-map-marker-alt"></i> ${propiedad.ubicacion}
+                </p>
+                <p>
+                  <i class="fas fa-bed"></i> ${
+                    propiedad.habitaciones
+                  } <span>Habitaciones</span> <span>|</span>
+                  <i class="fas fa-bath"></i> ${
+                    propiedad.baños
+                  } <span>Baños</span>
+                </p>
+                <p><i class="fas fa-dollar-sign"></i> ${propiedad.costo.toLocaleString("es-ES", { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</p>
+                ${propiedad.smoke ? 
+                  `<p class="text-success">
+                    <i class="fas fa-smoking">
+                    </i> Permitido fumar
+                  </p>`
+                    : `<p class="text-danger">
+                    <i class="fas fa-smoking-ban"
+                    ></i> No se permite fumar
+                  </p>`
+                }
+                  ${propiedad.pets ?
+                  `<p class="text-success">
+                    <i class="fas fa-paw">
+                    </i> Mascotas permitidas
+                  </p>`
+                      : `<p class="text-danger">
+                    <i class="fas fa-ban">
+                    </i> No se permiten mascotas
+                  </p>`
+                  }
+                </p>
+              </div>`;
+  ventaSection.innerHTML += cardTemplate;
+}
